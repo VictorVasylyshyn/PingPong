@@ -55,4 +55,14 @@
       <Filter>Исходные файлы</Filter>
     </Font>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release\PingPong.exe">
+      <Filter>Файлы ресурсов</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Desktop\readMe.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
