@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 class Score : public sf::Text {
 public:
-
+    // Didn't finish
     Score() {
         this->setPosition(500, 50);
         this->m_font.loadFromFile("arial.ttf");
