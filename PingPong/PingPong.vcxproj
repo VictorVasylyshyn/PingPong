@@ -172,10 +172,10 @@
     <Font Include="Nexa Light.otf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\x64\Release\PingPong.exe" />
+    <Text Include="..\..\..\..\Desktop\readMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\Desktop\readMe.txt" />
+    <None Include="..\x64\Release\PingPong.exe" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

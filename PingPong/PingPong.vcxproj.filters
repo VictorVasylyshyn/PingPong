@@ -59,13 +59,13 @@
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\x64\Release\PingPong.exe">
-      <Filter>Исходные файлы</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Text Include="..\..\..\..\Desktop\readMe.txt">
       <Filter>Исходные файлы</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Release\PingPong.exe">
+      <Filter>Исходные файлы</Filter>
+    </None>
   </ItemGroup>
 </Project>
