@@ -2,18 +2,11 @@
 #include <SFML/Graphics.hpp>
 class Score : public sf::Text {
 public:
-    Score() {
-        this->setPosition(500, 50);
-        this->m_font.loadFromFile("arial.ttf");
-        this->setCharacterSize(24);
-        this->setFont(m_font);
-        this->setFillColor(sf::Color::White);
-        this->setString("0");
-    }
-    static int hit;
-    void update(int hit) {
-        this->setString(std::to_string(hit));
-    }
+	Score();
+	static int hit;
+	void update(int hit);
+
 private:
-    sf::Font m_font;
+	sf::Font m_font;
+
 };

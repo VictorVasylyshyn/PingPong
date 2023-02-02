@@ -7,16 +7,16 @@
 #include "Score.h"
 class Game {
 public:
-    Game();
-    void run();
+	Game();
+	void run();
 private:
-    void processEvents();
-    void update();
-    void render();
-    std::unique_ptr<sf::RenderWindow> m_window;
-    std::unique_ptr<Paddle> m_p1;
-    std::unique_ptr<Paddle> m_p2;
-    std::unique_ptr<Ball> m_ball;
-    std::unique_ptr<Score> m_score;
-    
+	void processEvents();
+	void update();
+	void render();
+	std::unique_ptr<sf::RenderWindow> m_window;
+	std::unique_ptr<Paddle> m_p1;
+	std::unique_ptr<Paddle> m_p2;
+	std::unique_ptr<Ball> m_ball;
+	std::unique_ptr<Score> m_score;
+
 };
