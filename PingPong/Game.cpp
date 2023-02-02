@@ -13,9 +13,19 @@ Game::Game()
     m_score(std::make_unique<Score>()){}
 
 void Game::run() {
+    sf::Clock clock;
+    sf::Time timeSinceLastUpdate = sf::Time::Zero;
+    const sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+
     while (m_window->isOpen()) {
         processEvents();
-        update();
+
+        timeSinceLastUpdate += clock.restart();
+        while (timeSinceLastUpdate > TimePerFrame) {
+            timeSinceLastUpdate -= TimePerFrame;
+            update();
+        }
+
         render();
     }
 }
