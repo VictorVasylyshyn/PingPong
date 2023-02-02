@@ -8,7 +8,7 @@
 int Score::hit = 0;
 Ball::Ball(float x, float y) : sf::CircleShape(10) {
     this->setPosition(x, y);
-    this->m_velocity = sf::Vector2f(3, 3);
+    this->m_velocity = sf::Vector2f(4, 4);
 }
 
 void Ball::update(Paddle& p1, Paddle& p2) {

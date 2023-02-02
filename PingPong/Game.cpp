@@ -41,10 +41,10 @@ void Game::processEvents() {
 
 void Game::update() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        m_p1->m_speed = -3;
+        m_p1->m_speed = -4;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        m_p1->m_speed = 3;
+        m_p1->m_speed = 4;
     }
     else {
         m_p1->m_speed = 0;
@@ -53,11 +53,11 @@ void Game::update() {
     // control the second paddle to follow the ball
     if (m_ball->getPosition().y + m_ball->getRadius() >
         m_p2->getPosition().y + m_p2->getSize().y / 2) {
-        m_p2->m_speed = 3;
+        m_p2->m_speed = 4;
     }
     else if (m_ball->getPosition().y + m_ball->getRadius() <
         m_p2->getPosition().y + m_p2->getSize().y / 2) {
-        m_p2->m_speed = -3;
+        m_p2->m_speed = -4;
     }
     else {
         m_p2->m_speed = 0;
@@ -66,7 +66,7 @@ void Game::update() {
     m_p1->update();
     m_p2->update();
     m_ball->update(*m_p1, *m_p2);
-    m_score->update(Score::hit, 0);
+    m_score->update(Score::hit);
 }
 
 void Game::render() {
