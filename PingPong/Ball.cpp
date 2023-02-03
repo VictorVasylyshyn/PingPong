@@ -9,20 +9,20 @@
 
 Ball::Ball()
 {
-    shape.setRadius(10);
-    shape.setPosition(400, 300);
-    shape.setFillColor(sf::Color::White);
+    m_shape.setRadius(10);
+    m_shape.setPosition(400, 300);
+    m_shape.setFillColor(sf::Color::White);
 
-    velocity.x = 5;
-    velocity.y = 5;
+    m_velocity.x = 5;
+    m_velocity.y = 5;
 }
 
-void Ball::draw(sf::RenderWindow& window)
+void Ball::draw(sf::RenderWindow& m_window)
 {
-    window.draw(shape);
+    m_window.draw(m_shape);
 }
 
 void Ball::update()
 {
-    shape.move(velocity);
+    m_shape.move(m_velocity);
 }

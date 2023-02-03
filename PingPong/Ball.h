@@ -3,15 +3,14 @@
 #include <iostream>
 #include "GameObject.h"
 
-class Ball : public GameObject
-{
+class Ball : public GameObject{
 public:
-    sf::CircleShape shape;
-    sf::Vector2f velocity;
+    sf::CircleShape m_shape;
+    sf::Vector2f m_velocity;
 
     Ball();
 
-    void draw(sf::RenderWindow& window) override;
+    void draw(sf::RenderWindow& m_window) override;
 
     void update() override;
 };

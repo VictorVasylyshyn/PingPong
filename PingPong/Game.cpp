@@ -6,89 +6,81 @@
 #include "Paddle.h"
 #include "score.h"
 
-void Game::run()
-{
-    window.create(sf::VideoMode(800, 600), "Pong");
-    window.setFramerateLimit(60);
-    leftPaddle = std::make_shared<Paddle>(10, 300);
-    rightPaddle = std::make_shared<Paddle>(780, 300);
-    ball = std::make_shared<Ball>();
-    leftScore = std::make_shared<Score>(100, 20);
-    rightScore = std::make_shared<Score>(700, 20);
+void Game::run() {
 
-    objects.push_back(leftPaddle);
-    objects.push_back(rightPaddle);
-    objects.push_back(ball);
-    objects.push_back(leftScore);
-    objects.push_back(rightScore);
+	m_window.create(sf::VideoMode(800, 600), "Pong");
+	m_window.setFramerateLimit(60);
+	m_leftPaddle = std::make_shared<Paddle>(10, 300);
+	m_rightPaddle = std::make_shared<Paddle>(780, 300);
+	m_ball = std::make_shared<Ball>();
+	m_leftScore = std::make_shared<Score>(100, 20);
+	m_rightScore = std::make_shared<Score>(700, 20);
+
+	m_objects.push_back(m_leftPaddle);
+	m_objects.push_back(m_rightPaddle);
+	m_objects.push_back(m_ball);
+	m_objects.push_back(m_leftScore);
+	m_objects.push_back(m_rightScore);
 
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+	while (m_window.isOpen()) {
+		sf::Event event;
+		while (m_window.pollEvent(event)) {
+			if (event.type == sf::Event::Closed) {
+				m_window.close();
+			}
+		}
 
-        update();
-        render();
-    }
+		update();
+		render();
+	}
 }
-void Game::update()
-{
-    for (auto object : objects)
-        object->update();
+void Game::update() {
+	for (auto object : m_objects)
+		object->update();
 
-    sf::Vector2f ballPos = ball->shape.getPosition();
-    sf::Vector2f leftPaddlePos = leftPaddle->shape.getPosition();
-    sf::Vector2f rightPaddlePos = rightPaddle->shape.getPosition();
+	sf::Vector2f ballPos = m_ball->m_shape.getPosition();
+	sf::Vector2f leftPaddlePos = m_leftPaddle->m_shape.getPosition();
+	sf::Vector2f rightPaddlePos = m_rightPaddle->m_shape.getPosition();
 
-    if (ball->shape.getPosition().y + ball->shape.getRadius() >
-        rightPaddlePos.y + rightPaddle->shape.getSize().y / 2) {
-        rightPaddle->shape.move(0, 5);
-    }
-    else if (ball->shape.getPosition().y + ball->shape.getRadius() <
-        rightPaddlePos.y + rightPaddle->shape.getSize().y / 2) {
-        rightPaddle->shape.move(0, -5);
-    }
-    else {
-        rightPaddle->shape.move(0, 0);
-    }
-    // check for ball collision with paddles
-    if (ballPos.x - 10 < leftPaddlePos.x + 10 && ballPos.x - 10 > leftPaddlePos.x && ballPos.y + 10 > leftPaddlePos.y && ballPos.y - 10 < leftPaddlePos.y + 100)
-    {
-        ball->velocity.x = -ball->velocity.x;
-    }
-    if (ballPos.x + 10 > rightPaddlePos.x && ballPos.x + 10 < rightPaddlePos.x + 10 && ballPos.y + 10 > rightPaddlePos.y && ballPos.y - 10 < rightPaddlePos.y + 100)
-    {
-        ball->velocity.x = -ball->velocity.x;
-    }
+	if (m_ball->m_shape.getPosition().y + m_ball->m_shape.getRadius() > rightPaddlePos.y + m_rightPaddle->m_shape.getSize().y / 2) {
+		m_rightPaddle->m_shape.move(0, 5);
 
-    // check for ball out of bounds
-    if (ballPos.y + 10 > 600 || ballPos.y - 10 < 0)
-    {
-        ball->velocity.y = -ball->velocity.y;
-    }
-    if (ballPos.x < 0)
-    {
-        rightScore->score++;
-        ball->shape.setPosition(400, 300);
-    }
-    if (ballPos.x > 800)
-    {
-        leftScore->score++;
-        ball->shape.setPosition(400, 300);
-    }
+	}else if (m_ball->m_shape.getPosition().y + m_ball->m_shape.getRadius() < rightPaddlePos.y + m_rightPaddle->m_shape.getSize().y / 2) {
+		m_rightPaddle->m_shape.move(0, -5);
+
+	}else {
+		m_rightPaddle->m_shape.move(0, 0);
+	}
+
+	// check for ball collision with paddles
+	if (ballPos.x - 10 < leftPaddlePos.x + 10 && ballPos.x - 10 > leftPaddlePos.x && ballPos.y + 10 > leftPaddlePos.y && ballPos.y - 10 < leftPaddlePos.y + 100) {
+		m_ball->m_velocity.x = -m_ball->m_velocity.x;
+	}
+	if (ballPos.x + 10 > rightPaddlePos.x && ballPos.x + 10 < rightPaddlePos.x + 10 && ballPos.y + 10 > rightPaddlePos.y && ballPos.y - 10 < rightPaddlePos.y + 100){
+		m_ball->m_velocity.x = -m_ball->m_velocity.x;
+	}
+
+	// check for ball out of bounds
+	if (ballPos.y + 10 > 600 || ballPos.y - 10 < 0) {
+		m_ball->m_velocity.y = -m_ball->m_velocity.y;
+	}
+	if (ballPos.x < 0){
+		m_rightScore->m_score++;
+		m_ball->m_shape.setPosition(400, 300);
+	}
+	if (ballPos.x > 800){
+		m_leftScore->m_score++;
+		m_ball->m_shape.setPosition(400, 300);
+	}
 }
 
-void Game::render()
-{
-    window.clear();
+void Game::render() {
+	m_window.clear();
 
-    for (auto object : objects)
-        object->draw(window);
+	for (auto object : m_objects) {
+		object->draw(m_window);
+	}
 
-    window.display();
+	m_window.display();
 }

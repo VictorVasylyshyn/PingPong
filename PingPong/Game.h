@@ -7,22 +7,21 @@
 #include "Paddle.h"
 #include "Score.h"
 #include "GameObject.h"
-class Game
-{
+
+class Game{
 public:
     void run();
 
 private:
     void update();
-
     void render();
 
 private:
-    sf::RenderWindow window;
-    std::list<std::shared_ptr<GameObject>> objects;
-    std::shared_ptr<Paddle> leftPaddle;
-    std::shared_ptr<Paddle> rightPaddle;
-    std::shared_ptr<Ball> ball;
-    std::shared_ptr<Score> leftScore;
-    std::shared_ptr<Score> rightScore;
+    sf::RenderWindow m_window;
+    std::list<std::shared_ptr<GameObject>> m_objects;
+    std::shared_ptr<Paddle> m_leftPaddle;
+    std::shared_ptr<Paddle> m_rightPaddle;
+    std::shared_ptr<Ball> m_ball;
+    std::shared_ptr<Score> m_leftScore;
+    std::shared_ptr<Score> m_rightScore;
 };

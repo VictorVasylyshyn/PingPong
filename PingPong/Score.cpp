@@ -2,19 +2,19 @@
 #include "Score.h"
 
 Score::Score(float x, float y) {
-	score = 0;
+	m_score = 0;
 
-	font.loadFromFile("arial.ttf");
-	text.setFont(font);
-	text.setCharacterSize(24);
-	text.setPosition(x, y);
-	text.setFillColor(sf::Color::White);
+	m_font.loadFromFile("arial.ttf");
+	m_text.setFont(m_font);
+	m_text.setCharacterSize(24);
+	m_text.setPosition(x, y);
+	m_text.setFillColor(sf::Color::White);
 }
 
-void Score::draw(sf::RenderWindow& window) {
-	window.draw(text);
+void Score::draw(sf::RenderWindow& m_window) {
+	m_window.draw(m_text);
 }
 
 void Score::update() {
-	text.setString(std::to_string(score));
+	m_text.setString(std::to_string(m_score));
 }
