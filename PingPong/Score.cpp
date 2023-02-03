@@ -1,15 +1,20 @@
 #include <SFML/Graphics.hpp>
 #include "Score.h"
 
-Score::Score() {
-	this->setPosition(500, 50);
-	this->m_font.loadFromFile("arial.ttf");
-	this->setCharacterSize(24);
-	this->setFont(m_font);
-	this->setFillColor(sf::Color::White);
-	this->setString("0");
+Score::Score(float x, float y) {
+	score = 0;
+
+	font.loadFromFile("arial.ttf");
+	text.setFont(font);
+	text.setCharacterSize(24);
+	text.setPosition(x, y);
+	text.setFillColor(sf::Color::White);
 }
 
-void Score::update(int hit) {
-	this->setString(std::to_string(hit));
+void Score::draw(sf::RenderWindow& window) {
+	window.draw(text);
+}
+
+void Score::update() {
+	text.setString(std::to_string(score));
 }

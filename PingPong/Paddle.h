@@ -1,8 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-class Paddle : public sf::RectangleShape {
+#include "GameObject.h"
+class Paddle : public GameObject
+{
 public:
-    float m_speed;
+    sf::RectangleShape shape;
+
     Paddle(float x, float y);
-    void update();
+
+    void draw(sf::RenderWindow& window) override;
+
+    void update() override;
 };

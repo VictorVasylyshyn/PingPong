@@ -6,11 +6,16 @@
 #include "Ball.h"
 #include "Game.h"
 #include <random>
+#include <SFML/Graphics.hpp>
+#include <memory>
+#include <list>
 
-int main() {
-    srand((unsigned int)time(NULL));
+int main()
+{
     Game game;
     game.run();
 
     return 0;
 }
+
+

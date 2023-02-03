@@ -1,21 +1,25 @@
 #include <SFML/Graphics.hpp>
+#include "GameObject.h"
 #include "Paddle.h"
 
 
-Paddle::Paddle(float x, float y) : sf::RectangleShape(sf::Vector2f(20, 100)) {
-	this->setPosition(x, y);
-	this->m_speed = 0;
+Paddle::Paddle(float x, float y)
+{
+	shape.setSize(sf::Vector2f(10, 100));
+	shape.setPosition(x, y);
+}
+
+void Paddle::draw(sf::RenderWindow& window){
+	window.draw(shape);
 }
 
 void Paddle::update() {
-	float y = this->getPosition().y;
-	y += this->m_speed;
-
-	if (y < 0) {
-		y = 0;
-	}
-	if (y > 450) {
-		y = 450;
-	}
-	this->setPosition(this->getPosition().x, y);
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up) && shape.getPosition().y > 0)
+    {
+        shape.move(0, -5);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down) && shape.getPosition().y < 500)
+    {
+        shape.move(0, 5);
+    }
 }

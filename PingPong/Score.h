@@ -1,12 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-class Score : public sf::Text {
+#include "GameObject.h"
+class Score : public GameObject
+{
 public:
-	Score();
-	static int hit;
-	void update(int hit);
+	int score;
+	sf::Text text;
+	sf::Font font;
 
-private:
-	sf::Font m_font;
+	Score(float x, float y);
 
+	void draw(sf::RenderWindow& window) override;
+
+	void update() override;
 };

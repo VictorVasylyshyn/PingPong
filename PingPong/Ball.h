@@ -1,12 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Paddle.h"
-class Ball : public sf::CircleShape {
+#include "GameObject.h"
+
+class Ball : public GameObject
+{
 public:
-	sf::Vector2f m_velocity;
-	Ball(float x, float y);
-	void update(Paddle& p1, Paddle& p2);
+    sf::CircleShape shape;
+    sf::Vector2f velocity;
 
+    Ball();
 
+    void draw(sf::RenderWindow& window) override;
+
+    void update() override;
 };

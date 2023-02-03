@@ -2,21 +2,27 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
+#include <list>
 #include "Ball.h"
 #include "Paddle.h"
 #include "Score.h"
-class Game {
+#include "GameObject.h"
+class Game
+{
 public:
-	Game();
-	void run();
-private:
-	void processEvents();
-	void update();
-	void render();
-	std::unique_ptr<sf::RenderWindow> m_window;
-	std::unique_ptr<Paddle> m_p1;
-	std::unique_ptr<Paddle> m_p2;
-	std::unique_ptr<Ball> m_ball;
-	std::unique_ptr<Score> m_score;
+    void run();
 
+private:
+    void update();
+
+    void render();
+
+private:
+    sf::RenderWindow window;
+    std::list<std::shared_ptr<GameObject>> objects;
+    std::shared_ptr<Paddle> leftPaddle;
+    std::shared_ptr<Paddle> rightPaddle;
+    std::shared_ptr<Ball> ball;
+    std::shared_ptr<Score> leftScore;
+    std::shared_ptr<Score> rightScore;
 };
