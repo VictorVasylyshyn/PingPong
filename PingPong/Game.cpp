@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <Windows.h>
 #include <memory>
 #include "Game.h"
 #include "Ball.h"
@@ -10,11 +11,11 @@ void Game::run() {
 
 	m_window.create(sf::VideoMode(800, 600), "Pong");
 	m_window.setFramerateLimit(60);
-	m_leftPaddle = std::make_shared<Paddle>(10, 300);
-	m_rightPaddle = std::make_shared<Paddle>(780, 300);
+	m_leftPaddle = std::make_shared<Paddle>(10.f, 300.f);
+	m_rightPaddle = std::make_shared<Paddle>(780.f, 300.f);
 	m_ball = std::make_shared<Ball>();
-	m_leftScore = std::make_shared<Score>(100, 20);
-	m_rightScore = std::make_shared<Score>(700, 20);
+	m_leftScore = std::make_shared<Score>(100.f, 20.f);
+	m_rightScore = std::make_shared<Score>(700.f, 20.f);
 
 	m_objects.push_back(m_leftPaddle);
 	m_objects.push_back(m_rightPaddle);
@@ -55,9 +56,11 @@ void Game::update() {
 
 	// check for ball collision with paddles
 	if (ballPos.x - 10 < leftPaddlePos.x + 10 && ballPos.x - 10 > leftPaddlePos.x && ballPos.y + 10 > leftPaddlePos.y && ballPos.y - 10 < leftPaddlePos.y + 100) {
+		PlaySound("hit.wav", NULL, SND_ASYNC);
 		m_ball->m_velocity.x = -m_ball->m_velocity.x;
 	}
 	if (ballPos.x + 10 > rightPaddlePos.x && ballPos.x + 10 < rightPaddlePos.x + 10 && ballPos.y + 10 > rightPaddlePos.y && ballPos.y - 10 < rightPaddlePos.y + 100){
+		PlaySound("hit.wav", NULL, SND_ASYNC);
 		m_ball->m_velocity.x = -m_ball->m_velocity.x;
 	}
 
