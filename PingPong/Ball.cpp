@@ -1,11 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <Windows.h>
-#include "Paddle.h"
 #include "Ball.h"
-#include "score.h"
-
-#pragma comment(lib, "winmm.lib")
 
 Ball::Ball()
 {
